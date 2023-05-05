@@ -6,7 +6,7 @@ import 'package:sktr/Api_modelClass/all_get_data_modelClass.dart';
 
 class ApiAllGetData {
   static GetApiAllGetData(
-      context, String? dateFrom, String? dateTo, var areaId) async {
+      context, String? dateFrom, String? dateTo, var areaId,var bpId,var leaderId) async {
     String Link = "http://apps.bigerp24.com/api/get_data";
     List<DataLists> allGetDatalist = [];
     DataLists allDataListsClass;
@@ -18,7 +18,9 @@ class ApiAllGetData {
           data: {
             "dateFrom": "$dateFrom",
             "dateTo": "$dateTo",
-            "areaId": areaId != null ? int.parse("$areaId").toInt() : ""
+            "areaId": areaId != null ? int.parse("$areaId").toInt() : "",
+             "bpId": bpId != null ? int.parse("$areaId").toInt() : "",
+            "leaderId": leaderId != null ? int.parse("$areaId").toInt() : "",
           },
           options: Options(headers: {
             "Content-Type": "application/json",
