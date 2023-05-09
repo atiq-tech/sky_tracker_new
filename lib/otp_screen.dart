@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:sktr/views/data_list_screen.dart';
 import 'package:sktr/widget/button.dart';
 import 'package:sktr/widget/gap_height.dart';
 
@@ -107,3 +110,49 @@ class _OTPScreenState extends State<OTPScreen> {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // otpvarification() async {
+  //   try {
+  //     Response response = await Dio().post(
+  //         "http://apps.bigerp24.com/api/phone_verify?otpCode=${widget.api_otp}&code=${_OTPController.text}",
+  //         options: Options(headers: <String, String>{
+  //           "Authorization": "Bearer ${widget.token}"
+  //         }));
+  //     var item = jsonDecode(response.data);
+  //     print(item);
+  //     if (item["message"] == "Data Successfully Verified") {
+  //       Navigator.pushReplacement(
+  //           context, MaterialPageRoute(builder: (context) => DataListScreen()));
+  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //           backgroundColor: Color.fromARGB(255, 7, 125, 180),
+  //           duration: Duration(seconds: 1),
+  //           content: Center(child: Text("Data Successfully Verified"))));
+  //     }
+  //     print(item["message"]);
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }

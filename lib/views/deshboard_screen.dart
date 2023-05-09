@@ -173,7 +173,7 @@ class _DeshBoardScreenState extends State<DeshBoardScreen> {
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "DashBoard :",
+                  "Dashboard :",
                   style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.black,
@@ -184,80 +184,83 @@ class _DeshBoardScreenState extends State<DeshBoardScreen> {
               ),
             ),
             const SizedBox(height: 20.0),
-            Container(
-              height: MediaQuery.of(context).size.height,
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 4 / 4),
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return DeshBoard(
+                      title: index == 0
+                          ? "Data Entry"
+                          : index == 1
+                              ? "Data List"
+                              : index == 2
+                                  ? "My Profile"
+                                  : "Log Out",
+                      icon: index == 0
+                         ? Icons.receipt_long_outlined
+                          : index == 1
+                              ? Icons.list_alt_outlined
+                              : index == 2
+                                  ? Icons.person
+                                  : index == 3
+                                      ? Icons.login
+                                      : Icons.person,
+                      onTap: () {
+                        if (index == 0) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) {
+                              return DataEntryScreen(
+                                currentPositionUser: widget.currentPosition,
+                                token: widget.token,
+                              );
+                            }),
+                          );
+                        }
+                        if (index == 1) {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (_) => DataListScreen(),
+                            ),
+                          );
+                        }
+                        if (index == 2) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => MyProfile()),
+                          );
+                        }
+                        if (index == 3) {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (_) => LogInPage(),
+                            ),
+                          );
+                        }
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (_) {
+                        //     return DataEntryScreen(
+                        //       currentPositionUser: widget.currentPosition,
+                        //       token: widget.token,
+                        //     );
+                        //   }),
+                        // );
+                      },
+                    );
+                  },
                 ),
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return DeshBoard(
-                    title: index == 0
-                        ? "Data Entry"
-                        : index == 1
-                            ? "Data List"
-                            : index == 2
-                                ? "My Profile"
-                                : "Log Out",
-                    icon: index == 0
-                        ? Icons.receipt_long_outlined
-                        : index == 1
-                            ? Icons.receipt_long_outlined
-                            : index == 2
-                                ? Icons.list_alt_outlined
-                                : index == 3
-                                    ? Icons.person
-                                    : Icons.login,
-                    onTap: () {
-                      if (index == 0) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) {
-                            return DataEntryScreen(
-                              currentPositionUser: widget.currentPosition,
-                              token: widget.token,
-                            );
-                          }),
-                        );
-                      }
-                      if (index == 1) {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (_) => DataListScreen(),
-                          ),
-                        );
-                      }
-                      if (index == 2) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => MyProfile()),
-                        );
-                      }
-                      if (index == 3) {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (_) => LogInPage(),
-                          ),
-                        );
-                      }
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (_) {
-                      //     return DataEntryScreen(
-                      //       currentPositionUser: widget.currentPosition,
-                      //       token: widget.token,
-                      //     );
-                      //   }),
-                      // );
-                    },
-                  );
-                },
               ),
             ),
           ],
